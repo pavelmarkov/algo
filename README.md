@@ -5,6 +5,7 @@
 Use case, implementation, example, speed (O) if applied
 
 - Algorithms
+	- Binary Tree
 	- Dynamic programming
 - Sorting
 	- Quicksort
@@ -29,5 +30,7 @@ Use case, implementation, example, speed (O) if applied
 - Algorithms and Data Structures for Massive Datasets
 
 ### Implementation
+
+- [Binary Tree](./algorithms/binary-tree.py)
 
 ### Resources
