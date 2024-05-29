@@ -115,6 +115,18 @@ class BinaryTree:
     leftSubtree = self.dfs(node.left)
     rightSubtree = self.dfs(node.right)
     return  leftSubtree + [node.value] + rightSubtree
+  
+  def bfs(self, node):
+    visited = {}
+    queue = [ node ]
+    result = []
+    while(len(queue)):
+      node = queue.pop(0)
+      result.append(node.value)
+      if(node.left): queue.append(node.left)
+      if(node.right): queue.append(node.right)
+    return result
+
 
 
 binaryTree = BinaryTree(20)
@@ -150,3 +162,6 @@ binaryTree.print([binaryTree.root.right])
 
 dfsOrder = binaryTree.dfs(binaryTree.root)
 print('dfs result: ', dfsOrder)
+
+bfsOrder = binaryTree.bfs(binaryTree.root)
+print('bfs result: ', bfsOrder)
