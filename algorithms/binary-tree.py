@@ -108,6 +108,13 @@ class BinaryTree:
     padding = ' ' * (maxNum // len(treeRow))
     print(padding + padding.join(treeRow) + padding)
     return maxNum
+  
+  def dfs(self, node):
+    if(not node):
+       return []
+    leftSubtree = self.dfs(node.left)
+    rightSubtree = self.dfs(node.right)
+    return  leftSubtree + [node.value] + rightSubtree
 
 
 binaryTree = BinaryTree(20)
@@ -141,3 +148,5 @@ binaryTree.insert(32)
 binaryTree.print()
 binaryTree.print([binaryTree.root.right])
 
+dfsOrder = binaryTree.dfs(binaryTree.root)
+print('dfs result: ', dfsOrder)
