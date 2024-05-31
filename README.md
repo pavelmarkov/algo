@@ -5,7 +5,7 @@
 Use case, implementation, example, speed (O) if applied
 
 - Algorithms
-	- Binary Tree
+	- [Binary Tree](./algorithms/binary-tree.py)
 	- Dynamic programming
 - Sorting
 	- Quicksort
