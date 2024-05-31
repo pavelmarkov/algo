@@ -5,10 +5,12 @@
 Use case, implementation, example, speed (O) if applied
 
 - Algorithms
-	- [Binary Tree](./algorithms/binary-tree.py)
 	- Dynamic programming
 - Sorting
-	- Quicksort
+	- [Quicksort](./algorithms/quicksort.py)
+	- [Countsort](./algorithms/countsort.py)
+- Tree
+	- [Binary Tree](./algorithms/binary-tree.py)
 - DS/ML
 	- K-nearest neighbours
 	- Neural network
