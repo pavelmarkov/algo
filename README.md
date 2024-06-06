@@ -9,8 +9,12 @@ Use case, implementation, example, speed (O) if applied
 - Sorting
 	- [Quicksort](./algorithms/sort/quicksort.py)
 	- [Countsort](./algorithms/sort/countsort.py)
+- Searching
+	...
 - Tree
 	- [Binary Tree](./algorithms/tree/binary-tree.py)
+- Fractal
+	- [Koch Curve](./algorithms/fractal/koch-curve.py)
 - DS/ML
 	- K-nearest neighbours
 	- Neural network
