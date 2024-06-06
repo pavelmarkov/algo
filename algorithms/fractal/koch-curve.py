@@ -10,11 +10,10 @@ def kochCurve(depth, angle, length):
   if(depth == 0):
     t.forward(length)
   else:
-    angle = 0
-    kochCurve(depth - 1, angle, length / 3)
-    kochCurve(depth - 1, angle + 60, length / 3)
-    kochCurve(depth - 1, angle - 120, length / 3)
-    kochCurve(depth - 1, angle + 60, length / 3)
+    kochCurve(depth - 1, 0, length / 3)
+    kochCurve(depth - 1, 60, length / 3)
+    kochCurve(depth - 1, -120, length / 3)
+    kochCurve(depth - 1, 60, length / 3)
 
 size = 360
 depth = 4
