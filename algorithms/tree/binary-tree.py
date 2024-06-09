@@ -1,4 +1,4 @@
-# python3 ./algorithms/binary-tree.py
+# python3 ./algorithms/tree/binary-tree.py
 
 class Node:
   def __init__(self, value = None):
@@ -125,7 +125,39 @@ class BinaryTree:
       if(node.left): queue.append(node.left)
       if(node.right): queue.append(node.right)
     return result
-
+  
+  def treeToArrayBfs(self):
+    result = []
+    node = self.root
+    if(not node):
+      return result
+    nodesQueue = [ node ]
+    level = 0
+    expectedNumOfNodesOnLevel = pow(2, level)
+    while(True):
+      nodeExist = False
+      for node in nodesQueue:
+        if(node):
+          nodeExist = True
+          break
+      if(not nodeExist):
+        break
+      for _ in range(0, expectedNumOfNodesOnLevel):
+        node = nodesQueue.pop(0)
+        if(node):
+          result.append(node.value)
+          if(node.left): nodesQueue.append(node.left)
+          else: nodesQueue.append(None)
+          if(node.right): nodesQueue.append(node.right)
+          else: nodesQueue.append(None)
+        else:
+          result.append(None)
+          nodesQueue.append(None)
+          nodesQueue.append(None)
+      level += 1
+      expectedNumOfNodesOnLevel = pow(2, level)
+    return result
+    
 
 
 binaryTree = BinaryTree(20)
@@ -140,6 +172,9 @@ binaryTree.insert(33)
 print('printPiramid(): ', '\n')
 binaryTree.print()
 
+print('treeToArrayBfs(): ', '\n')
+print(binaryTree.treeToArrayBfs())
+
 findNode = binaryTree.findNodeByValue(30)
 print('findNodeByValue(30): ', findNode.left.value, '\n')
 
@@ -150,13 +185,19 @@ binaryTree.delete(10)
 print('delete(10): ', '\n')
 binaryTree.print()
 
+print('treeToArrayBfs(): ', '\n')
+print(binaryTree.treeToArrayBfs())
+
 binaryTree.insert(40)
 binaryTree.insert(15)
 binaryTree.insert(2)
 binaryTree.insert(25)
 binaryTree.insert(29)
 binaryTree.insert(32)
+binaryTree.insert(45)
 binaryTree.print()
+print('treeToArrayBfs(): ', '\n')
+print(binaryTree.treeToArrayBfs())
 binaryTree.print([binaryTree.root.right])
 
 dfsOrder = binaryTree.dfs(binaryTree.root)
