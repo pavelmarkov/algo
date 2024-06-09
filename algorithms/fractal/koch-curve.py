@@ -16,10 +16,14 @@ def kochCurve(depth, angle, length):
     kochCurve(depth - 1, 60, length / 3)
 
 size = 360
-depth = 4
-turtle.setworldcoordinates(-1, -1, size, size)
+depth = 3
+turtle.setworldcoordinates(-1, -1, size+100, size+100)
 t.penup()
-t.goto(0, size / 2)
+t.goto(0, (size +100) / 2)
 t.pendown()
-t.speed(0)
+t.speed(5)
+kochCurve(depth, 0, size)
+t.left(-120)
+kochCurve(depth, 0, size)
+t.left(-120)
 kochCurve(depth, 0, size)
