@@ -125,7 +125,7 @@ class BinaryTree:
     print('-=-' * (numLevels - 2))
     print('\n')
   
-  ''' Description
+  ''' Description _
     the length of result, depending on the hight of binary tree is
     N = 2^(h+1) - 1
   '''
