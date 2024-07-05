@@ -25,7 +25,7 @@ class BinaryTree:
         node = node.left
       else:
         raise Exception('Duplicate value: ', value)
-  
+
   def findNodeByValue(self, value):
     node = self.root
     while(True):
@@ -38,22 +38,6 @@ class BinaryTree:
         node = node.left
       else:
         return node
-      
-  def findMinNodeInSubtree(self, node):
-    minNode = node
-    parentNode = node
-    while(minNode.left):
-      parentNode = minNode
-      minNode = minNode.left
-    return minNode, parentNode
-  
-
-  
-  def print(self, startingNodes = None):
-    print('tree: ')
-    numLevels = self.printPiramid(startingNodes)
-    print('-=-' * (numLevels - 2))
-    print('\n')
 
   def countChildren(self, node):
     count = 0
@@ -62,6 +46,14 @@ class BinaryTree:
     if(node.right):
       count += 1
     return count
+
+  def findMinNodeInSubtree(self, node):
+    minNode = node
+    parentNode = node
+    while(minNode.left):
+      parentNode = minNode
+      minNode = minNode.left
+    return minNode, parentNode
 
   def delete(self, value):
     deleteNode = self.findNodeByValue(value)
@@ -81,6 +73,23 @@ class BinaryTree:
       else:
         deleteNode.value = deleteNode.right.value
         deleteNode.right = deleteNode.right.right
+
+  def dfs(self, node):
+    if(not node):
+       return []
+    leftSubtree = self.dfs(node.left)
+    rightSubtree = self.dfs(node.right)
+    return  leftSubtree + [node.value] + rightSubtree
+  
+  def bfs(self, node):
+    queue = [ node ]
+    result = []
+    while(len(queue)):
+      node = queue.pop(0)
+      result.append(node.value)
+      if(node.left): queue.append(node.left)
+      if(node.right): queue.append(node.right)
+    return result
   
   def printPiramid(self, nodes = None, level = 0):
     if(not nodes):
@@ -109,54 +118,51 @@ class BinaryTree:
     print(padding + padding.join(treeRow) + padding)
     return maxNum
   
-  def dfs(self, node):
-    if(not node):
-       return []
-    leftSubtree = self.dfs(node.left)
-    rightSubtree = self.dfs(node.right)
-    return  leftSubtree + [node.value] + rightSubtree
+
+  def print(self, startingNodes = None):
+    print('tree: ')
+    numLevels = self.printPiramid(startingNodes)
+    print('-=-' * (numLevels - 2))
+    print('\n')
   
-  def bfs(self, node):
-    queue = [ node ]
-    result = []
-    while(len(queue)):
-      node = queue.pop(0)
-      result.append(node.value)
-      if(node.left): queue.append(node.left)
-      if(node.right): queue.append(node.right)
-    return result
-  
+  '''
+    the length of result, depending on the hight of binary tree is
+    N = 2^(h+1) - 1
+  '''
   def treeToArrayBfs(self):
-    result = []
-    node = self.root
-    if(not node):
-      return result
-    nodesQueue = [ node ]
-    level = 0
-    expectedNumOfNodesOnLevel = pow(2, level)
+    if(not self.root):
+      return []
+    
+    result = [ self.root ] # tree values in bfs order
+    cursor = 0 # current node index
+    level = 0 # current level
+
+    expectedNumOfNodesOnLevel = pow(2, level) # expected number of nodes on this level
+    nodeExists = True # if any node exists on this level
+
     while(True):
-      nodeExist = False
-      for node in nodesQueue:
-        if(node):
-          nodeExist = True
-          break
-      if(not nodeExist):
-        break
+      nodeExists = False
+
       for _ in range(0, expectedNumOfNodesOnLevel):
-        node = nodesQueue.pop(0)
-        if(node):
-          result.append(node.value)
-          if(node.left): nodesQueue.append(node.left)
-          else: nodesQueue.append(None)
-          if(node.right): nodesQueue.append(node.right)
-          else: nodesQueue.append(None)
-        else:
-          result.append(None)
-          nodesQueue.append(None)
-          nodesQueue.append(None)
+        node = result[cursor]
+        cursor += 1
+        if(not node):
+          result.extend([None, None])
+          continue
+        if(node.left): 
+          result.append(node.left) 
+          nodeExists = True
+        else: result.append(None)
+        if(node.right): 
+          result.append(node.right)
+          nodeExists = True
+        else: result.append(None)
+      
+      if(not nodeExists):
+        return result[0:cursor]
+      
       level += 1
       expectedNumOfNodesOnLevel = pow(2, level)
-    return result
     
 
 
