@@ -167,12 +167,7 @@ class BinaryTree:
 
 
 binaryTree = BinaryTree(20)
-binaryTree.insert(10)
-binaryTree.insert(30)
-binaryTree.insert(7)
-binaryTree.insert(13)
-binaryTree.insert(27)
-binaryTree.insert(33)
+[binaryTree.insert(value) for value in [10, 30, 7, 13, 27, 33]]
 
 
 print('printPiramid(): ', '\n')
@@ -194,13 +189,8 @@ binaryTree.print()
 print('treeToArrayBfs(): ', '\n')
 print(binaryTree.treeToArrayBfs())
 
-binaryTree.insert(40)
-binaryTree.insert(15)
-binaryTree.insert(2)
-binaryTree.insert(25)
-binaryTree.insert(29)
-binaryTree.insert(32)
-binaryTree.insert(45)
+[binaryTree.insert(value) for value in [40, 15, 2, 25, 29, 32, 45]]
+
 binaryTree.print()
 print('treeToArrayBfs(): ', '\n')
 print(binaryTree.treeToArrayBfs())
