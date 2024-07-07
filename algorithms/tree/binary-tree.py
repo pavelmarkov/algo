@@ -149,14 +149,11 @@ class BinaryTree:
         if(not node):
           result.extend([None, None])
           continue
-        if(node.left): 
-          result.append(node.left) 
-          nodeExists = True
-        else: result.append(None)
-        if(node.right): 
-          result.append(node.right)
-          nodeExists = True
-        else: result.append(None)
+        for childNode in [node.left, node.right]:
+          if(childNode): 
+            result.append(childNode) 
+            nodeExists = True
+          else: result.append(None)
       
       if(not nodeExists):
         return result[0:cursor]
