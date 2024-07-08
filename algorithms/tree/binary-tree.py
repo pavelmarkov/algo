@@ -91,44 +91,6 @@ class BinaryTree:
       if(node.right): queue.append(node.right)
     return result
   
-  def printPiramid(self, nodes = None, level = 0):
-    if(not nodes):
-      maxElements = self.printPiramid([ self.root ], 0)
-      print(' ' * (maxElements - 1) + str(self.root.value))
-      return maxElements
-    nodeExist = False
-    for node in nodes:
-      if(node):
-        nodeExist = True
-        break
-    numOfNodesOnThisLevel = pow(2, level)
-    if(not nodeExist):
-      return numOfNodesOnThisLevel
-    thisLevelNodes = []
-    for node in nodes:
-      if(not node):
-        thisLevelNodes.append(None)
-        thisLevelNodes.append(None)
-        continue
-      thisLevelNodes.append(node.left)
-      thisLevelNodes.append(node.right)
-    maxNum = self.printPiramid(thisLevelNodes, level+1)
-    treeRow = [((node and str(node.value)) or ' ') for node in thisLevelNodes]
-    padding = ' ' * (maxNum // len(treeRow))
-    print(padding + padding.join(treeRow) + padding)
-    return maxNum
-  
-
-  def print(self, startingNodes = None):
-    print('tree: ')
-    numLevels = self.printPiramid(startingNodes)
-    print('-=-' * (numLevels - 2))
-    print('\n')
-  
-  ''' Description 3
-    the length of result, depending on the hight of binary tree is
-    N = 2^(h+1) - 1
-  '''
   def treeToArrayBfs(self):
     if(not self.root):
       return []
@@ -160,18 +122,35 @@ class BinaryTree:
       
       level += 1
       expectedNumOfNodesOnLevel = pow(2, level)
+
+  def print(self):
+    print('\n')
+    nodesInBfsOrder = self.treeToArrayBfs()
+    numOfNodes = len(nodesInBfsOrder)
+    level = 0
+    cursor = 0
+    expectedNumOfNodesOnLevel = pow(2, level)
+    while(cursor < numOfNodes):
+      row = [
+        ((node and str(f'{node.value:02}')) or ' ') 
+        for node in nodesInBfsOrder[
+          cursor:cursor+expectedNumOfNodesOnLevel
+        ]
+      ]
+      shift = ' ' * ((numOfNodes + 1) // (expectedNumOfNodesOnLevel * 2))
+      print(shift + shift.join(row) + shift)
+      
+      level += 1
+      cursor += expectedNumOfNodesOnLevel
+      expectedNumOfNodesOnLevel = pow(2, level)
+    print('\n')
     
 
 
 binaryTree = BinaryTree(20)
 [binaryTree.insert(value) for value in [10, 30, 7, 13, 27, 33]]
 
-
-print('printPiramid(): ', '\n')
 binaryTree.print()
-
-print('treeToArrayBfs(): ', '\n')
-print(binaryTree.treeToArrayBfs())
 
 findNode = binaryTree.findNodeByValue(30)
 print('findNodeByValue(30): ', findNode.left.value, '\n')
@@ -183,15 +162,9 @@ binaryTree.delete(10)
 print('delete(10): ', '\n')
 binaryTree.print()
 
-print('treeToArrayBfs(): ', '\n')
-print(binaryTree.treeToArrayBfs())
-
 [binaryTree.insert(value) for value in [40, 15, 2, 25, 29, 32, 45]]
 
 binaryTree.print()
-print('treeToArrayBfs(): ', '\n')
-print(binaryTree.treeToArrayBfs())
-binaryTree.print([binaryTree.root.right])
 
 dfsOrder = binaryTree.dfs(binaryTree.root)
 print('dfs result: ', dfsOrder, '\n')
