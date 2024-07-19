@@ -13,6 +13,8 @@ Use case, implementation, example, speed (O) if applied
 	...
 - Tree
 	- [Binary Tree](./algorithms/tree/binary-tree.py)
+- Networks
+	- [Graph](./algorithms/graph/graph.py)
 - Fractal
 	- [Koch Curve](./algorithms/fractal/koch-curve.py)
 - DS/ML
