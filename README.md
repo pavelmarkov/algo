@@ -15,6 +15,7 @@ Use case, implementation, example, speed (O) if applied
 	- [Binary Tree](./algorithms/tree/binary-tree.py)
 - Networks
 	- [Graph](./algorithms/graph/graph.py)
+	- [Shortest paths](./algorithms/graph/dijkstra-shortest-paths.py)
 - String
 	- [Matching parentheses](./algorithms/string/validate-parentheses.py)
 - Fractal
