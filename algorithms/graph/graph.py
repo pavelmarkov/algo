@@ -16,7 +16,7 @@ class Edge:
   def get(self):
     return (self.src, self.dist)
 
-class Graph:
+class Graph():
   def __init__(self, directed = False):
     self.nodes = set()
     self.edges = []
@@ -50,11 +50,13 @@ class Graph:
       row += '}'
       print(row)
 
+
+
 graph = Graph()
 
-graph.addEdge('A', 'B')
-graph.addEdge('B', 'C')
-graph.addEdge('B', 'D')
+graph.addEdge('A', 'B', 1)
+graph.addEdge('B', 'C', 2)
+graph.addEdge('B', 'D', 3)
 
 print(graph.nodes)
 graph.print()
