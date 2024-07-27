@@ -10,7 +10,7 @@ Use case, implementation, example, speed (O) if applied
 	- [Quicksort](./algorithms/sort/quicksort.py)
 	- [Countsort](./algorithms/sort/countsort.py)
 - Searching
-	...
+	- [Binary Search](./algorithms/search/binary-search.py)
 - Tree
 	- [Binary Tree](./algorithms/tree/binary-tree.py)
 - Networks
