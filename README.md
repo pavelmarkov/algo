@@ -16,6 +16,7 @@ Use case, implementation, example, speed (O) if applied
 - Networks
 	- [Graph](./algorithms/graph/graph.py)
 	- [Shortest paths](./algorithms/graph/dijkstra-shortest-paths.py)
+	- [Minimum spanning tree](./algorithms/graph/minimum-spanning-tree.py)
 - String
 	- [Matching parentheses](./algorithms/string/validate-parentheses.py)
 - Fractal

@@ -15,6 +15,9 @@ class Edge:
   
   def get(self):
     return (self.src, self.dist)
+  
+  def toTuple(self):
+    return (self.src, self.dist, self.weight)
 
 class Graph():
   def __init__(self, directed = False):
@@ -52,11 +55,11 @@ class Graph():
 
 
 
-graph = Graph()
+# graph = Graph()
 
-graph.addEdge('A', 'B', 1)
-graph.addEdge('B', 'C', 2)
-graph.addEdge('B', 'D', 3)
+# graph.addEdge('A', 'B', 1)
+# graph.addEdge('B', 'C', 2)
+# graph.addEdge('B', 'D', 3)
 
-print(graph.nodes)
-graph.print()
+# print(graph.nodes)
+# graph.print()
