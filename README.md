@@ -8,6 +8,7 @@ Use case, implementation, example, speed (O) if applied
 	- Dynamic programming
 - Linear
 	- [Linked List](./algorithms/linear/linked-list.py)
+	- [Heap](./algorithms/linear/max-heap.py)
 - Sorting
 	- [Quicksort](./algorithms/sort/quicksort.py)
 	- [Countsort](./algorithms/sort/countsort.py)
