@@ -1,6 +1,6 @@
-# python3 ./algorithms/linear/max-heap.py
+# python3 ./algorithms/linear/maxheap.py
 
-class maxHeap:
+class MaxHeap:
   def __init__(self):
     self.heap = []
 
@@ -14,12 +14,19 @@ class maxHeap:
       return None
     return (index - 1) // 2
 
+
   def getElementByIndex(self, index):
     if(index is None or 
        index < 0 or 
        index >= len(self.heap)):
       return None
     return self.heap[index]
+  
+  def getChildren(self, index):
+    indexes = [index * 2 + 1, index * 2 + 2]
+    elements = [self.getElementByIndex(indexes[0]),
+                self.getElementByIndex(indexes[1])]
+    return indexes, elements
   
   def up(self, index):
 
@@ -34,6 +41,35 @@ class maxHeap:
 
       self.swapByIndex(index, parentIndex)
       index = parentIndex
+
+  def down(self, index):
+
+    element = self.heap[index]
+
+    while(index * 2 + 1 < len(self.heap)):
+      childIdxes, childElements = self.getChildren(index)
+
+      if(childElements[1] is None):
+        if(element < childElements[0]):
+          self.swapByIndex(index, childIdxes[0])
+        break
+
+      if(childElements[0] > childElements[1]):
+        if(element < childElements[0]):
+          self.swapByIndex(index, childIdxes[0])
+          index = childIdxes[0]
+      elif(element < childElements[1]):
+          self.swapByIndex(index, childIdxes[1])
+          index = childIdxes[1]
+      else: break
+
+  def removeMax(self):
+    maxValue = self.heap[0]
+    self.heap[0] = self.heap[-1]
+    del self.heap[-1]
+    if(len(self.heap) > 0):
+      self.down(0)
+    return maxValue
 
   def add(self, element):
     self.heap.append(element)
@@ -56,8 +92,9 @@ class maxHeap:
       currentIndex += level
       level = 2**i
       padding //= 2
+    print('\n')
 
-heap = maxHeap()
+heap = MaxHeap()
 
 for i in [ 15, 10, 6, 11, 17, 7, 42, 
            3, 7, 1, 2, 5, 6, 4 ]:
@@ -70,4 +107,7 @@ heap.print()
 #  10 11 6 7
 # 3 7 1 2 5 6 4
 
+for _ in range(0, len(heap.heap)):
+  heap.removeMax()
+  heap.print()
 
