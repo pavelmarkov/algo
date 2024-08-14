@@ -1,8 +1,7 @@
-# algo
+# Algo
 ## Algorithms and Data Structures
 
-### Roadmap
-Use case, implementation, example, speed (O) if applied
+### Roadmap/implementation
 
 - Algorithms
 	- Dynamic programming
@@ -45,9 +44,5 @@ Use case, implementation, example, speed (O) if applied
 - Grokking Algorithms
 - Essential Algorithms. A practical approach to computer algorithms
 - Algorithms and Data Structures for Massive Datasets
-
-### Implementation
-
-- [Binary Tree](./algorithms/binary-tree.py)
 
 ### Resources
