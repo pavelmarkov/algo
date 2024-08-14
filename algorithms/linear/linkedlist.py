@@ -1,4 +1,4 @@
-# python3 ./algorithms/linear/linked-list.py
+# python3 ./algorithms/linear/linkedlist.py
 
 class Node:
   def __init__(self, data = None, connected = []):
@@ -54,6 +54,13 @@ class LinkedList:
         return node
 
     return None
+  
+  def deleteFirst(self):
+    if(self.head == None):
+      return None
+    first = self.head
+    self.head = self.head.next
+    return first
   
   def toArray(self):
     result = []
