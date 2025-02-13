@@ -1,5 +1,4 @@
-# Algo
-## Algorithms and Data Structures
+# Algorithms and Data Structures
 
 ### Roadmap/implementation
 
